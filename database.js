@@ -8,7 +8,10 @@ module.exports.connect = function _connect(callback) {
     host: config.database.host,
     user: config.database.user,
     password: config.database.password,
-    database: config.database.database
+    database: config.database.database,
+    supportBigNumbers: true,
+    bigNumberStrings: true,
+    dateStrings: true
   });
   connection.connect(function _connect(err) {
     callback(err, connection);

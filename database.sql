@@ -7,5 +7,7 @@ CREATE TABLE transaction(
   authorisationResponse VARCHAR(255) NULL DEFAULT NULL,
   authorisationResponseReason VARCHAR(255) NULL DEFAULT NULL,
   completionRequired TINYINT UNSIGNED NULL DEFAULT NULL,
+  cancelled TINYINT UNSIGNED NULL DEFAULT NULL,
+  dateCreated DATETIME NULL DEFAULT NULL,
   PRIMARY KEY (recipientTransactionId)
 )ENGINE = InnoDB;

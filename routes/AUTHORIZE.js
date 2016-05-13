@@ -40,38 +40,40 @@ router.post('/', function _post(req, res) {
       if (err) {
         return res.sendStatus(500);
       }
-      var sql = 'INSERT INTO transaction (initiatorTransactionId, authorisationResponse, authorisationResponseReason, completionRequired) VALUES (?, ?, ?, ?)';
+      var sql = 'INSERT INTO transaction (initiatorTransactionId, authorisationResponse, authorisationResponseReason, completionRequired, cancelled, dateCreated) VALUES (?, ?, ?, ?, 0, NOW())';
       var params = [initiatorTransactionId, authorisationResponse, authorisationResponseReason, (completionRequired ? '1' : '0')];
       connection.query(sql, params, function _query(err, result) {
         if (err) {
-          return res.sendStatus(500);
+          connection.end(function _end() {
+            return res.sendStatus(500);
+          });
         }
-        var recipientTransactionId = result.insertId.toString();
-        var responseData = {
-          Document: {
-            AccptrAuthstnRspn: {
-              AuthstnRspn: {
-                Tx: {
-                  RcptTxId: recipientTransactionId
-                },
-                TxRspn: {
-                  AuthstnRslt: {
-                    RspnToAuthstn: {
-                      Rspn: authorisationResponse,
-                      RspnRsn: '0000'
-                    },
-                    AuthstnCd: recipientTransactionId,
-                    CmpltnReqrd: (completionRequired ? 'true' : 'false')
-                  }
-                }
-              }
-            }
-          }
-        };
         connection.end(function _end(err) {
           if (err) {
             return res.sendStatus(500);
           }
+          var recipientTransactionId = result.insertId.toString();
+          var responseData = {
+            Document: {
+              AccptrAuthstnRspn: {
+                AuthstnRspn: {
+                  Tx: {
+                    RcptTxId: recipientTransactionId
+                  },
+                  TxRspn: {
+                    AuthstnRslt: {
+                      RspnToAuthstn: {
+                        Rspn: authorisationResponse,
+                        RspnRsn: '0000'
+                      },
+                      AuthstnCd: recipientTransactionId,
+                      CmpltnReqrd: (completionRequired ? 'true' : 'false')
+                    }
+                  }
+                }
+              }
+            }
+          };
           res.send(util.xmlBuilder.buildObject(responseData));
         });
       });

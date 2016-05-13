@@ -46,7 +46,7 @@ router.post('/', function _post(req, res) {
 });
 function captureAndReturnTransaction(connection, request, callback) {
   var recipientTransactionId = util.readProperty(request, ['Document', 'AccptrCmpltnAdvc', 'CmpltnAdvc', 'Tx', 'OrgnlTx', 'RcptTxId']);
-  var sql = 'UPDATE transaction SET cancelled = 1 WHERE recipientTransactionId = ? AND cancelled = 0 ORDER BY recipientTransactionId DESC LIMIT 1';
+  var sql = 'UPDATE transaction SET completionRequired = 0 WHERE recipientTransactionId = ? AND completionRequired = 1 ORDER BY recipientTransactionId DESC LIMIT 1';
   var params = [recipientTransactionId];
   connection.query(sql, params, function _query(err) {
     if (err) {

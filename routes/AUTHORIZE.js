@@ -1,5 +1,6 @@
 'use strict';
 
+var creditCard = require('credit-card');
 var express = require('express');
 var path = require('path');
 var database = require(path.join(__dirname, '..', 'database.js'));
@@ -10,18 +11,30 @@ router.post('/', function _post(req, res) {
     if (err) {
       return res.sendStatus(500);
     }
-    console.log(result.Document.AccptrAuthstnReq.AuthstnReq);
     var transactionData = util.readProperty(result, ['Document', 'AccptrAuthstnReq', 'AuthstnReq']);
-    console.log(transactionData.Envt.Card.PlainCardData.PAN);
+    var cardNumber = util.readProperty(transactionData, ['Envt', 'Card', 'PlainCardData', 'PAN']);
     var cardData = {
-      number: util.readProperty(transactionData, ['Envt', 'Card', 'PlainCardData', 'PAN']),
-      expiryMonth: util.readProperty(transactionData, ['Envt', 'Card', 'PlainCardData', 'XpryDt']).substr(0, 4),
-      expiryYear: util.readProperty(transactionData, ['Envt', 'Card', 'PlainCardData', 'XpryDt']).substr(5, 2)
+      cardType: creditCard.determineCardType(cardNumber),
+      number: cardNumber,
+      expiryMonth: util.readProperty(transactionData, ['Envt', 'Card', 'PlainCardData', 'XpryDt']).substr(5, 2),
+      expiryYear: util.readProperty(transactionData, ['Envt', 'Card', 'PlainCardData', 'XpryDt']).substr(0, 4)
     };
-    console.log(cardData);
+    var cvv = util.readProperty(transactionData, ['Envt', 'Card', 'PlainCardData', 'CardSctyCd', 'CSCVal']);
+    if (cvv) {
+      cardData.cvv = cvv;
+    }
+    var validation = creditCard.validate(cardData);
+    var authorisationResponse;
+    var authorisationResponseReason;
+    if (validation.validCardNumber && validation.validExpiryMonth && validation.validExpiryYear && ((!cardData.cvv) || (cardData.cvv && validation.validCvv)) && !validation.isExpired) {
+      authorisationResponse = 'APPR';
+      authorisationResponseReason = '0000';
+    }
+    else {
+      authorisationResponse = 'DECL';
+      authorisationResponseReason = '1000';
+    }
     var initiatorTransactionId = util.readProperty(transactionData, ['Tx', 'InitrTxId']);
-    var authorisationResponse = 'APPR';
-    var authorisationResponseReason = '0000';
     var completionRequired = (util.readProperty(transactionData, ['Tx', 'TxCaptr']) === 'true' ? false : true);
     database.connect(function _connect(err, connection) {
       if (err) {
@@ -55,7 +68,12 @@ router.post('/', function _post(req, res) {
             }
           }
         };
-        res.send(util.xmlBuilder.buildObject(responseData));
+        connection.end(function _end(err) {
+          if (err) {
+            return res.sendStatus(500);
+          }
+          res.send(util.xmlBuilder.buildObject(responseData));
+        });
       });
     });
   });

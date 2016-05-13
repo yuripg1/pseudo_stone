@@ -36,12 +36,13 @@ router.post('/', function _post(req, res) {
     }
     var initiatorTransactionId = util.readProperty(transactionData, ['Tx', 'InitrTxId']);
     var completionRequired = (util.readProperty(transactionData, ['Tx', 'TxCaptr']) === 'true' ? false : true);
+    var amount = util.readProperty(transactionData, ['Tx', 'TxDtls', 'TtlAmt']);
     database.connect(function _connect(err, connection) {
       if (err) {
         return res.sendStatus(500);
       }
-      var sql = 'INSERT INTO transaction (initiatorTransactionId, authorisationResponse, authorisationResponseReason, completionRequired, cancelled, dateCreated) VALUES (?, ?, ?, ?, 0, NOW())';
-      var params = [initiatorTransactionId, authorisationResponse, authorisationResponseReason, (completionRequired ? '1' : '0')];
+      var sql = 'INSERT INTO transaction (initiatorTransactionId, authorisationResponse, authorisationResponseReason, completionRequired, amount, cancelled, dateCreated) VALUES (?, ?, ?, ?, ?, 0, NOW())';
+      var params = [initiatorTransactionId, authorisationResponse, authorisationResponseReason, (completionRequired ? '1' : '0'), amount];
       connection.query(sql, params, function _query(err, result) {
         if (err) {
           connection.end(function _end() {

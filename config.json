@@ -3,7 +3,7 @@
         "host": "localhost",
         "user": "root",
         "password": "root",
-        "schema": "pseudo_stone"
+        "database": "pseudo_stone"
     },
     "port": 3002
 }

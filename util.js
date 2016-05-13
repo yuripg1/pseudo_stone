@@ -1,4 +1,5 @@
 'use strict';
+
 var xml2js = require('xml2js');
 module.exports.xmlBuilder = new xml2js.Builder({
   headless: true,
@@ -17,12 +18,10 @@ module.exports.readProperty = function readProperty(variable, keysArray) {
       if (nextValue === undefined) {
         return undefined;
       }
-
       currentValue = nextValue;
     } else {
       return undefined;
     }
   }
-
   return currentValue;
 };

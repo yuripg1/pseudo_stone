@@ -79,11 +79,11 @@ function searchTransaction(connection, request, callback) {
   var sql;
   var params;
   if (recipientTransactionId) {
-    sql = 'SELECT * FROM transaction WHERE recipientTransactionId = ? ORDER BY recipientTransactionId DESC';
+    sql = 'SELECT * FROM transaction WHERE recipientTransactionId = ? ORDER BY recipientTransactionId DESC LIMIT 1';
     params = [recipientTransactionId];
   }
   else {
-    sql = 'SELECT * FROM transaction WHERE initiatorTransactionId = ? ORDER BY recipientTransactionId DESC';
+    sql = 'SELECT * FROM transaction WHERE initiatorTransactionId = ? ORDER BY recipientTransactionId DESC LIMIT 1';
     params = [initiatorTransactionId];
   }
   connection.query(sql, params, function _query(err, rows) {

@@ -1,0 +1,9 @@
+{
+    "database": {
+        "host": "localhost",
+        "user": "root",
+        "password": "root",
+        "schema": "pseudo_stone"
+    },
+    "port": 3002
+}

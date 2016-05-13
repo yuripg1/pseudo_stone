@@ -7,6 +7,7 @@ var config = require(path.join(__dirname, 'config.json'));
 var routeAuthorize = require(path.join(__dirname, 'routes', 'AUTHORIZE.js'));
 var routeTransactionStatusReport = require(path.join(__dirname, 'routes', 'TransactionStatusReport.js'));
 var routeCancellation = require(path.join(__dirname, 'routes', 'CANCELLATION.js'));
+var routeCompletionAdvice = require(path.join(__dirname, 'routes', 'COMPLETIONADVICE.js'));
 var app = express();
 app.use(bodyParser.text({
   type: 'application/xml',
@@ -14,4 +15,5 @@ app.use(bodyParser.text({
 app.use('/AUTHORIZE', routeAuthorize);
 app.use('/TransactionStatusReport', routeTransactionStatusReport);
 app.use('/CANCELLATION', routeCancellation);
+app.use('/COMPLETIONADVICE', routeCompletionAdvice);
 app.listen(config.port);

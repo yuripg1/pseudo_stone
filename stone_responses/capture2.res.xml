@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:AcceptorCompletionAdviceResponseV02.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <AccptrCmpltnAdvcRspn>
+      <Hdr>
+         <MsgFctn>CMPK</MsgFctn>
+         <PrtcolVrsn>2.0</PrtcolVrsn>
+         <CreDtTm>2016-05-17T15:38:07</CreDtTm>
+      </Hdr>
+      <CmpltnAdvcRspn>
+         <Envt>
+            <MrchntId>
+               <Id>8E51DE32849943389B67EC5E8AD7C721</Id>
+            </MrchntId>
+         </Envt>
+         <Tx>
+            <TxId>
+               <TxDtTm>2016-05-17T18:38:06</TxDtTm>
+               <TxRef>1</TxRef>
+            </TxId>
+            <Rspn>DECL</Rspn>
+         </Tx>
+      </CmpltnAdvcRspn>
+   </AccptrCmpltnAdvcRspn>
+</Document>

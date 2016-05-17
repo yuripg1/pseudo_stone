@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:AcceptorTransactionStatusReportResponseV02.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <AccptrTxStsRptRspn>
+      <Hdr>
+         <MsgFctn>TSRP</MsgFctn>
+         <PrtcolVrsn>2.0</PrtcolVrsn>
+         <CreDtTm>2016-05-17T17:02:34</CreDtTm>
+         <InitgPty>
+            <Id>8E51DE32849943389B67EC5E8AD7C721</Id>
+         </InitgPty>
+      </Hdr>
+      <TxStsRptRspn>
+         <Tx>
+            <Summry>
+               <RcptTxId>23860049978038</RcptTxId>
+               <InitrTxId>1</InitrTxId>
+               <AcqrrDtTm>2016-05-17T18:02:56</AcqrrDtTm>
+               <LclDtTm>2016-05-17T18:02:55</LclDtTm>
+               <FrstCaptrDtTm>2016-05-17T18:02:55</FrstCaptrDtTm>
+               <FrstCxlDtTm />
+               <TtlOrgnlAmt>50.00</TtlOrgnlAmt>
+               <TtlAuthrsdAmt>50.00</TtlAuthrsdAmt>
+               <TtlCaptrdAmt>50.00</TtlCaptrdAmt>
+               <TtlCancAmt>0.00</TtlCancAmt>
+               <AuthrsdSts>FULL</AuthrsdSts>
+               <CaptrdSts>FULL</CaptrdSts>
+               <CancSts>NONE</CancSts>
+               <Ccy>986</Ccy>
+               <AcctTp>CRDT</AcctTp>
+               <MrchntShrtNm>HAHAHA</MrchntShrtNm>
+               <MrchntCtgyCd>5411</MrchntCtgyCd>
+               <Instlmt>
+                  <TtlNbOfPmts>1</TtlNbOfPmts>
+               </Instlmt>
+            </Summry>
+            <Oprs>
+               <Authstn>
+                  <RcptOprId>2386000049978038</RcptOprId>
+                  <AcqrrDtTm>2016-05-17T18:02:56</AcqrrDtTm>
+                  <LclDtTm>2016-05-17T18:02:55</LclDtTm>
+                  <OrgnlAmt>50.00</OrgnlAmt>
+                  <AuthrsdAmt>50.00</AuthrsdAmt>
+                  <Rspn>APPR</Rspn>
+                  <RspnRsn>0000</RspnRsn>
+                  <AuthstnCd>978038</AuthstnCd>
+               </Authstn>
+            </Oprs>
+         </Tx>
+      </TxStsRptRspn>
+   </AccptrTxStsRptRspn>
+</Document>

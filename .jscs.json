@@ -46,7 +46,7 @@
   "validateQuoteMarks": { "mark": "'", "escape": true },
   "requirePaddingNewLinesBeforeLineComments": { "allExcept": "firstAfterCurly" },
   "requireSpacesInNamedFunctionExpression": {"beforeOpeningCurlyBrace": true},
-  "validateIndentation": { "value": 2, "allExcept": ["comments", "emptyLines"] },
+  "validateIndentation": { "value": 2, "allExcept": ["comments"] },
   "validateParameterSeparator": ", ",
   "disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"],
   "disallowSpacesInsideBrackets": {"allExcept": [ "[", "]", "{", "}" ]},

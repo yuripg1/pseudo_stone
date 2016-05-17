@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:AcceptorAuthorisationResponseV02.1" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+   <AccptrAuthstnRspn>
+      <Hdr>
+         <MsgFctn>AUTP</MsgFctn>
+         <PrtcolVrsn>2.0</PrtcolVrsn>
+         <CreDtTm>2016-05-17T15:04:58</CreDtTm>
+      </Hdr>
+      <AuthstnRspn>
+         <Envt>
+            <MrchntId>
+               <Id>8E51DE32849943389B67EC5E8AD7C721</Id>
+               <ShrtNm>hahaha</ShrtNm>
+            </MrchntId>
+         </Envt>
+         <Tx>
+            <TxId>
+               <TxDtTm>2016-05-17T18:04:53</TxDtTm>
+               <TxRef>1</TxRef>
+            </TxId>
+            <RcptTxId>23860049978039</RcptTxId>
+            <TxDtls>
+               <Ccy>986</Ccy>
+               <TtlAmt>0</TtlAmt>
+               <AcctTp>CRDT</AcctTp>
+            </TxDtls>
+         </Tx>
+         <TxRspn>
+            <AuthstnRslt>
+               <RspnToAuthstn>
+                  <Rspn>DECL</Rspn>
+                  <RspnRsn>1010</RspnRsn>
+               </RspnToAuthstn>
+               <AuthstnCd />
+               <CmpltnReqrd>false</CmpltnReqrd>
+            </AuthstnRslt>
+            <Actn>
+               <ActnTp>DISP</ActnTp>
+               <MsgToPres>
+                  <MsgDstn>MDSP</MsgDstn>
+                  <MsgCntt>Valor inválido</MsgCntt>
+               </MsgToPres>
+            </Actn>
+         </TxRspn>
+      </AuthstnRspn>
+   </AccptrAuthstnRspn>
+</Document>

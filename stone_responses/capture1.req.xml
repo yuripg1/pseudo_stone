@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:AcceptorCompletionAdviceV02.1">
+   <AccptrCmpltnAdvc>
+      <Hdr>
+         <MsgFctn>CMPV</MsgFctn>
+         <PrtcolVrsn>2.0</PrtcolVrsn>
+      </Hdr>
+      <CmpltnAdvc>
+         <Envt>
+            <Mrchnt>
+               <Id>
+                  <Id>8E51DE32849943389B67EC5E8AD7C721</Id>
+               </Id>
+            </Mrchnt>
+         </Envt>
+         <Tx>
+            <InitrTxId>1</InitrTxId>
+            <TxId>
+               <TxDtTm>2016-05-17T18:34:30</TxDtTm>
+               <TxRef>1</TxRef>
+            </TxId>
+            <OrgnlTx>
+               <RcptTxId>23860049978035</RcptTxId>
+            </OrgnlTx>
+            <TxDtls>
+               <Ccy>986</Ccy>
+               <TtlAmt>5000</TtlAmt>
+            </TxDtls>
+         </Tx>
+      </CmpltnAdvc>
+   </AccptrCmpltnAdvc>
+</Document>

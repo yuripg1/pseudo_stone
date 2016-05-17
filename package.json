@@ -20,6 +20,7 @@
     "body-parser": "^1.15.1",
     "credit-card": "^2.0.0",
     "express": "^4.13.4",
+    "moment": "^2.13.0",
     "mysql": "^2.10.2",
     "xml2js": "^0.4.16"
   }

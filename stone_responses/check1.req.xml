@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document xmlns="urn:AcceptorTransactionStatusReportRequestV02.1">
+   <AccptrTxStsRptRq>
+      <Hdr>
+         <MsgFctn>TSRR</MsgFctn>
+         <PrtcolVrsn>2.0</PrtcolVrsn>
+         <InitgPty>
+            <Id>8E51DE32849943389B67EC5E8AD7C721</Id>
+         </InitgPty>
+      </Hdr>
+      <TxStsRpt>
+         <Tx>
+            <TxRpt>OPRS</TxRpt>
+            <TxRpt>SUMM</TxRpt>
+            <OrgnlTx>
+               <InitrTxId>1</InitrTxId>
+               <RcptTxId>23860049978035</RcptTxId>
+            </OrgnlTx>
+         </Tx>
+      </TxStsRpt>
+   </AccptrTxStsRptRq>
+</Document>

@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/yuripg1/pseudo_stone#readme",
   "dependencies": {
+    "async": "^2.4.1",
     "body-parser": "^1.15.1",
     "credit-card": "^2.0.0",
     "express": "^4.13.4",

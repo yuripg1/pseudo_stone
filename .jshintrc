@@ -13,6 +13,5 @@
   "undef": true,
   "unused": true,
   "mocha": true,
-  "node": true,
-  "latedef" : "nofunc"
+  "node": true
 }

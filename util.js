@@ -8,7 +8,7 @@ module.exports.xmlBuilder = new xml2js.Builder({
   },
 });
 module.exports.xmlParser = new xml2js.Parser({
-  explicitArray: false,
+  explicitArray: true,
 });
 module.exports.readProperty = function readProperty(variable, keysArray) {
   var currentValue = variable;

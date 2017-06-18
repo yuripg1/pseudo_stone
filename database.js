@@ -1,19 +1,27 @@
 'use strict';
 
-var mysql = require('mysql');
-var path = require('path');
-var config = require(path.join(__dirname, 'config.json'));
-module.exports.connect = function _connect(callback) {
-  var connection = mysql.createConnection({
-    host: config.database.host,
-    user: config.database.user,
-    password: config.database.password,
-    database: config.database.database,
-    supportBigNumbers: true,
-    bigNumberStrings: true,
-    dateStrings: true
-  });
-  connection.connect(function _connect(err) {
+const mysql = require('mysql');
+const path = require('path');
+
+const config = require(path.join(__dirname, 'config.json'));
+
+const connection = mysql.createConnection({
+  host: config.database.host,
+  port: config.database.port,
+  user: config.database.user,
+  password: config.database.password,
+  database: config.database.database,
+  supportBigNumbers: true,
+  bigNumberStrings: true,
+  dateStrings: true,
+});
+
+function connect(callback) {
+  connection.connect((err) => {
     callback(err, connection);
   });
+}
+
+module.exports = {
+  connect,
 };

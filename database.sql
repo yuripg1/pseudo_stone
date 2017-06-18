@@ -3,12 +3,13 @@ CREATE SCHEMA pseudo_stone DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE pseudo_stone;
 CREATE TABLE transaction(
   recipientTransactionId BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
-  initiatorTransactionId VARCHAR(255) NULL DEFAULT NULL,
-  authorisationResponse VARCHAR(255) NULL DEFAULT NULL,
-  authorisationResponseReason VARCHAR(255) NULL DEFAULT NULL,
-  completionRequired TINYINT UNSIGNED NULL DEFAULT NULL,
-  amount INT UNSIGNED NULL DEFAULT NULL,
-  cancelled TINYINT UNSIGNED NULL DEFAULT NULL,
-  dateCreated DATETIME NULL DEFAULT NULL,
+  sale_affiliation_key BINARY(16) NOT NULL
+  initiatorTransactionId VARCHAR(255) NULL,
+  authorisationResponse VARCHAR(255) NULL,
+  authorisationResponseReason VARCHAR(255) NULL,
+  completionRequired TINYINT UNSIGNED NULL,
+  amount INT UNSIGNED NULL,
+  cancelled TINYINT UNSIGNED NULL,
+  dateCreated DATETIME NULL,
   PRIMARY KEY (recipientTransactionId)
 )ENGINE = InnoDB;
